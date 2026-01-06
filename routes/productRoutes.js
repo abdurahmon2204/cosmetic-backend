@@ -1,24 +1,23 @@
 import express from "express";
-import upload from "../middleware/upload.js";
 import {
   getProducts,
-  getProductById,    // bitta product controller
+  getProductById,
   createProduct,
   deleteProduct,
 } from "../controllers/productController.js";
 
 const router = express.Router();
 
-// Barcha products
+// Barcha productlar
 router.get("/", getProducts);
 
 // Bitta product
 router.get("/:id", getProductById);
 
-// Product yaratish
-router.post("/", upload.single("image"), createProduct);
+// Yangi product qo‘shish
+router.post("/", createProduct);
 
-// Product o'chirish
+// Product o‘chirish
 router.delete("/:id", deleteProduct);
 
 export default router;

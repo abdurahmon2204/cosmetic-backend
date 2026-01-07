@@ -1,23 +1,18 @@
 import express from "express";
+import upload from "../middleware/upload.js";
 import {
   getProducts,
   getProductById,
   createProduct,
-  deleteProduct,
+  deleteProduct
 } from "../controllers/productController.js";
+import { protect, admin } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// Barcha productlar
 router.get("/", getProducts);
-
-// Bitta product
 router.get("/:id", getProductById);
-
-// Yangi product qo‘shish
-router.post("/", createProduct);
-
-// Product o‘chirish
-router.delete("/:id", deleteProduct);
+router.post("/", protect, admin, upload.single("image"), createProduct);
+router.delete("/:id", protect, admin, deleteProduct);
 
 export default router;

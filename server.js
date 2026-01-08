@@ -6,6 +6,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 
+console.log("JWT Secret: ", process.env.JWT_SECRET);
 dotenv.config();
 connectDB();
 

@@ -14,11 +14,7 @@ const generateToken = (id) => {
   });
 };
 
-/**
- * @desc    Yangi foydalanuvchini ro'yxatdan o'tkazish
- * @route   POST /api/auth/register
- * @access  Public
- */
+
 export const register = async (req, res) => {
   const { name, email, password } = req.body;
 

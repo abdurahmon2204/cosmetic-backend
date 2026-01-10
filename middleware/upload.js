@@ -1,14 +1,12 @@
-// middleware/upload.js (Yangi kod)
-
 import multer from "multer";
 import path from "path";
 
-// __dirname Node.js ES Modulesda bevosita mavjud emas, shuning uchun uni hosil qilamiz
-const __dirname = path.resolve(); // Loyihaning ildiz katalogini beradi
+// 1. __dirname ni aniqlash (ESM uchun)
+const __dirname = path.resolve(); 
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    // Manzilni loyiha ildiziga nisbatan aniq ko'rsatamiz
+    // 2. path.join yordamida aniq manzilni belgilash
     cb(null, path.join(__dirname, "uploads")); 
   },
   filename(req, file, cb) {

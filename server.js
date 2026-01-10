@@ -10,7 +10,7 @@ import productRoutes from "./routes/productRoutes.js";
 dotenv.config();
 
 // ES Modulesda __dirname bevosita mavjud emas, shuning uchun path.resolve() ishlatiladi.
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 // JWT Secretni tekshirish
 console.log("JWT Secret: ", process.env.JWT_SECRET);
@@ -29,8 +29,8 @@ app.use(express.urlencoded({ extended: true }));
 // Bu yerdagi '/uploads' manziliga kelgan so'rovlarni 
 // loyiha ildizidagi 'uploads' katalogiga yo'naltiramiz.
 // =========================================================
-app.use("/uploads", express.static(path.join(__dirname, "uploads"))); 
-
+// app.use("/uploads", express.static(path.join(__dirname, "uploads"))); 
+app.use("/uploads", express.static("/tmp/uploads"));
 
 // Routerlar
 app.use("/api/auth", authRoutes);
